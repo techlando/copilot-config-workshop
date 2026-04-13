@@ -342,11 +342,11 @@ Confirm that the file `docs/project-plan.md` exists and contains a structured pr
 
 Before moving on, confirm each item:
 
-- [ ] `.github/agents/planner.agent.md` exists
-- [ ] The agent file has valid YAML front matter with `name` and `description`
-- [ ] `docs/project-plan.md` exists
-- [ ] The project plan covers the Task Manager CLI scope
-- [ ] The plan references Node.js with no external dependencies
+- [x] `.github/agents/planner.agent.md` exists
+- [x] The agent file has valid YAML front matter with `name` and `description`
+- [x] `docs/project-plan.md` exists
+- [x] The project plan covers the Task Manager CLI scope
+- [x] The plan references Node.js with no external dependencies
 
 ## Commit and Push
 
