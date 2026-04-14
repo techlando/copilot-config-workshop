@@ -5,6 +5,12 @@
 - JavaScript, Node.js 20+.
 - Use ES module syntax (`import`/`export`), not CommonJS (`require`).
 
+## Dependencies
+
+- Use only built-in Node.js modules for core functionality.
+- The `chalk` package is approved for terminal output formatting.
+- Do not add other external dependencies without approval.
+
 ## Code Style
 
 - Use 2-space indentation.
