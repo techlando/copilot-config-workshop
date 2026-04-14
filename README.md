@@ -1,57 +1,37 @@
-# GitHub Copilot Configuration Workshop
+<div align="center">
 
-_Learn to configure and use GitHub Copilot effectively through hands-on exercises._
+# 🎉 Congratulations techlando! 🎉
 
-## Welcome
+<img src="https://octodex.github.com/images/welcometocat.png" height="200px" />
 
-- **Who is this for**: Developers, project managers, team leads, and anyone involved in the software development lifecycle who wants to get the most out of GitHub Copilot.
-- **What you'll learn**: How Copilot supports every phase of the SDLC, from planning and design through implementation and testing. You practice prompt engineering, custom instructions, path-specific instructions, prompt files, custom agents, and agent orchestration.
-- **What you'll build**: Seven specialized Copilot configurations — including agents, code review, and dependency security — that plan, design, implement, test, review, secure, and orchestrate a Task Manager application end-to-end.
-- **Prerequisites**:
-  - A GitHub account with access to GitHub Copilot
-  - One of the following:
-    - **GitHub Codespaces** (recommended, no local setup required)
-    - Visual Studio Code with the GitHub Copilot extension installed
-- **How long**: This workshop takes approximately 3-4 hours to complete.
+### 🌟 You've successfully completed the exercise! 🌟
 
-In this exercise, you will:
+## 🚀 Share Your Success!
 
-1. Practice prompt engineering strategies and build a **Planner Agent** (SDLC: Planning phase)
-1. Create repository-wide custom instructions and build an **Architect Agent** (SDLC: Design phase)
-1. Add path-specific instructions and build a **Developer Agent** (SDLC: Implementation phase)
-1. Create reusable prompt files and build a **Tester Agent** (SDLC: Testing phase)
-1. Use **Copilot code review** on a pull request that adds a new dependency (SDLC: Code Review phase)
-1. Configure **Dependabot** and the dependency review action (SDLC: Security phase)
-1. Build an **Orchestrator Agent** and deliver a new feature using the full SDLC pipeline
+**Show off your new skills and inspire others!**
 
-### How to start this exercise
+<a href="https://twitter.com/intent/tweet?text=I%20just%20completed%20the%20%22GitHub%20Copilot%20Configuration%20Workshop%22%20GitHub%20Skills%20hands-on%20exercise!%20%F0%9F%8E%89%0A%0Ahttps%3A%2F%2Fgithub.com%2Ftechlando%2Fcopilot-config-workshop%0A%0A%23GitHubSkills%20%23OpenSource%20%23GitHubLearn" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/Share%20on%20X-1da1f2?style=for-the-badge&logo=x&logoColor=white" alt="Share on X" />
+</a>
+<a href="https://bsky.app/intent/compose?text=I%20just%20completed%20the%20%22GitHub%20Copilot%20Configuration%20Workshop%22%20GitHub%20Skills%20hands-on%20exercise!%20%F0%9F%8E%89%0A%0Ahttps%3A%2F%2Fgithub.com%2Ftechlando%2Fcopilot-config-workshop%0A%0A%23GitHubSkills%20%23OpenSource%20%23GitHubLearn" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/Share%20on%20Bluesky-0085ff?style=for-the-badge&logo=bluesky&logoColor=white" alt="Share on Bluesky" />
+</a>
+<a href="https://www.linkedin.com/feed/?shareActive=true&text=I%20just%20completed%20the%20%22GitHub%20Copilot%20Configuration%20Workshop%22%20GitHub%20Skills%20hands-on%20exercise!%20%F0%9F%8E%89%0A%0Ahttps%3A%2F%2Fgithub.com%2Ftechlando%2Fcopilot-config-workshop%0A%0A%23GitHubSkills%20%23OpenSource%20%23GitHubLearn" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/Share%20on%20LinkedIn-0077b5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Share on LinkedIn" />
+</a>
 
-Copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
+### 🎯 What's Next?
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=samueltauil&template_name=copilot-config-workshop&owner=%40me&name=skills-copilot-config-workshop&description=Exercise:+GitHub+Copilot+Configuration+Workshop&visibility=public)
+**Keep the momentum going!**
 
-After copying, open your new repository and click **Code > Codespaces > Create codespace on main** for the fastest setup (no local tools required).
+[![](https://img.shields.io/badge/Return%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/techlando/copilot-config-workshop/issues/1)
+[![GitHub Skills](https://img.shields.io/badge/Explore%20GitHub%20Skills-000000?style=for-the-badge&logo=github&logoColor=white)](https://learn.github.com/skills)
 
-Or clone the repository and open it in VS Code locally.
+*There's no better way to learn than building things!* 🚀
 
-<details>
-<summary>Having trouble? 🤷</summary><br/>
-
-When copying the exercise, we recommend the following settings:
-
-- For owner, choose your personal account or an organization to host the repository.
-- We recommend creating a public repository, since private repositories will use Actions minutes.
-
-If the exercise isn't ready in 20 seconds, please check the [Actions](../../actions) tab.
-
-- Check to see if a job is running. Sometimes it takes a bit longer.
-- If the page shows a failed job, please submit an issue. Nice, you found a bug! 🐛
-
-</details>
+</div>
 
 ---
 
-[Acknowledgments](ACKNOWLEDGMENTS.md) &bull; Images courtesy of [GitHub Skills](https://github.com/skills) and [Octodex](https://octodex.github.com)
-
-&copy; 2026 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
 
