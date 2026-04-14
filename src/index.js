@@ -23,22 +23,33 @@ function runDemo() {
     const taskA = createTask({
       title: 'Read docs/schema.md',
       description: 'Understand required model fields and constraints.',
-      priority: 'high'
+      priority: 'high',
+      category: 'work'
     });
     const taskB = createTask({
       title: 'Implement services',
       status: 'in-progress',
-      priority: 'medium'
+      priority: 'medium',
+      category: 'urgent'
     });
-    printTasks([taskA, taskB]);
+    const taskC = createTask({
+      title: 'Buy groceries',
+      description: 'Milk, eggs, fruit',
+      priority: 'low'
+    });
+    printTasks([taskA, taskB, taskC]);
 
     printHeader('List tasks');
     printTasks(listTasks());
 
+    printHeader('Filter tasks by category (work)');
+    printTasks(listTasks({ category: 'WORK' }));
+
     printHeader('Update task');
     const updatedTask = updateTask(taskA.id, {
       status: 'done',
-      description: 'Schema reviewed and implementation completed.'
+      description: 'Schema reviewed and implementation completed.',
+      category: 'personal'
     });
     printTasks([updatedTask]);
 

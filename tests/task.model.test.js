@@ -44,6 +44,13 @@ test('Task constructor supports missing optional description field', () => {
   assert.equal(task.description, '');
   assert.equal(task.status, 'todo');
   assert.equal(task.priority, 'medium');
+  assert.equal(task.category, 'general');
+});
+
+test('Task constructor normalizes provided category', () => {
+  const task = new Task(makeBaseTaskData({ id: '12', category: '  UrGent  ' }));
+
+  assert.equal(task.category, 'urgent');
 });
 
 test('Task constructor accepts very long title and description', () => {
@@ -103,6 +110,13 @@ test('Task constructor validates priority values', () => {
   });
 });
 
+test('Task constructor validates category values', () => {
+  assert.throws(() => new Task(makeBaseTaskData({ category: '   ' })), {
+    name: 'TypeError',
+    message: 'category cannot be empty when provided.'
+  });
+});
+
 test('Task constructor validates createdAt timestamp', () => {
   assert.throws(() => new Task(makeBaseTaskData({ createdAt: 'not-a-date' })), {
     name: 'TypeError',
@@ -128,6 +142,7 @@ test('Task.toJSON returns plain object snapshot', () => {
     description: 'Cover model behavior',
     status: 'todo',
     priority: 'medium',
+    category: 'general',
     createdAt: input.createdAt,
     updatedAt: input.updatedAt
   });

@@ -2,6 +2,29 @@ const TASK_STATUSES = ['todo', 'in-progress', 'done'];
 const TASK_PRIORITIES = ['low', 'medium', 'high'];
 
 /**
+ * Validates and normalizes a task category.
+ * @param {unknown} value Category value.
+ * @param {string} name Argument name for error messages.
+ * @returns {string} Lowercased category.
+ * @example
+ * assertCategory('Work', 'category');
+ * @example
+ * assertCategory('  urgent  ', 'task.category');
+ */
+export function assertCategory(value, name = 'category') {
+  if (typeof value !== 'string') {
+    throw new TypeError(`${name} must be a string when provided.`);
+  }
+
+  const normalized = value.trim().toLowerCase();
+  if (normalized.length === 0) {
+    throw new TypeError(`${name} cannot be empty when provided.`);
+  }
+
+  return normalized;
+}
+
+/**
  * Ensures a value is a plain object.
  * @param {unknown} value Value to validate.
  * @param {string} name Argument name for error messages.
@@ -150,7 +173,7 @@ export function isMutableTaskField(key) {
     throw new TypeError('key must be a string.');
   }
 
-  return ['title', 'description', 'status', 'priority'].includes(key);
+  return ['title', 'description', 'status', 'priority', 'category'].includes(key);
 }
 
 export { TASK_PRIORITIES, TASK_STATUSES };

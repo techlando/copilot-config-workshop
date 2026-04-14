@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import {
+  assertCategory,
   assertDescription,
   assertIsoTimestamp,
   assertPriority,
@@ -20,6 +21,7 @@ export class Task {
    * @param {string} [data.description] Task description.
    * @param {'todo'|'in-progress'|'done'} [data.status] Task status.
    * @param {'low'|'medium'|'high'} [data.priority] Task priority.
+  * @param {string} [data.category] Task category.
    * @param {string} data.createdAt ISO creation timestamp.
    * @param {string} data.updatedAt ISO update timestamp.
    */
@@ -37,6 +39,8 @@ export class Task {
     this.description = assertDescription(data.description, 'description');
     this.status = assertStatus(data.status ?? 'todo', 'status');
     this.priority = assertPriority(data.priority ?? 'medium', 'priority');
+    this.category =
+      data.category === undefined ? 'general' : assertCategory(data.category, 'category');
     this.createdAt = assertIsoTimestamp(data.createdAt, 'createdAt');
     this.updatedAt = assertIsoTimestamp(data.updatedAt, 'updatedAt');
   }
@@ -52,6 +56,7 @@ export class Task {
       description: this.description,
       status: this.status,
       priority: this.priority,
+      category: this.category,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };

@@ -42,6 +42,14 @@ test('createTask handles missing optional fields when explicitly undefined', asy
   assert.equal(created.description, '');
   assert.equal(created.status, 'todo');
   assert.equal(created.priority, 'medium');
+  assert.equal(created.category, 'general');
+});
+
+test('createTask normalizes provided category', async () => {
+  const { createTask } = await loadService();
+  const created = createTask({ title: 'Categorized task', category: '  Work  ' });
+
+  assert.equal(created.category, 'work');
 });
 
 test('createTask supports duplicate titles as separate tasks', async () => {
@@ -72,6 +80,25 @@ test('listTasks returns cloned task objects', async () => {
 
   const secondRead = listTasks();
   assert.equal(secondRead[0].title, 'Immutable list check');
+});
+
+test('listTasks filters tasks by category case-insensitively', async () => {
+  const { createTask, listTasks } = await loadService();
+  createTask({ title: 'Write docs', category: 'work' });
+  createTask({ title: 'Pay bills', category: 'personal' });
+
+  const filtered = listTasks({ category: ' WORK ' });
+  assert.equal(filtered.length, 1);
+  assert.equal(filtered[0].title, 'Write docs');
+});
+
+test('listTasks rejects empty category filter', async () => {
+  const { listTasks } = await loadService();
+
+  assert.throws(() => listTasks({ category: '   ' }), {
+    name: 'TypeError',
+    message: 'filters.category cannot be empty when provided.'
+  });
 });
 
 test('updateTask updates mutable fields and refreshes updatedAt', async () => {
@@ -133,6 +160,24 @@ test('updateTask accepts very long description update', async () => {
 
   const updated = updateTask(created.id, { description: longDescription });
   assert.equal(updated.description.length, 40000);
+});
+
+test('updateTask updates category with normalized value', async () => {
+  const { createTask, updateTask } = await loadService();
+  const created = createTask({ title: 'Category update target', category: 'general' });
+
+  const updated = updateTask(created.id, { category: '  Personal  ' });
+  assert.equal(updated.category, 'personal');
+});
+
+test('updateTask rejects empty category update', async () => {
+  const { createTask, updateTask } = await loadService();
+  const created = createTask({ title: 'Bad category update target' });
+
+  assert.throws(() => updateTask(created.id, { category: '   ' }), {
+    name: 'TypeError',
+    message: 'category cannot be empty when provided.'
+  });
 });
 
 test('listTasks iteration remains stable while adding tasks', async () => {

@@ -1,5 +1,6 @@
 import { Task } from '../models/task.js';
 import {
+  assertCategory,
   assertDescription,
   assertPlainObject,
   assertPriority,
@@ -38,6 +39,7 @@ export function createTask(input) {
       description: assertDescription(data.description, 'description'),
       status: data.status === undefined ? 'todo' : assertStatus(data.status, 'status'),
       priority: data.priority === undefined ? 'medium' : assertPriority(data.priority, 'priority'),
+      category: data.category === undefined ? 'general' : assertCategory(data.category, 'category'),
       createdAt: now,
       updatedAt: now
     });
@@ -57,10 +59,32 @@ export function createTask(input) {
 
 /**
  * Lists all tasks.
+ * @param {object} [filters] Optional filters.
+ * @param {'todo'|'in-progress'|'done'} [filters.status] Status filter.
+ * @param {'low'|'medium'|'high'} [filters.priority] Priority filter.
+ * @param {string} [filters.category] Category filter.
  * @returns {object[]} Copy of all tasks.
  */
-export function listTasks() {
-  return store.tasks.map((task) => cloneTask(task));
+export function listTasks(filters = {}) {
+  const normalizedFilters = assertPlainObject(filters, 'filters');
+  const status =
+    normalizedFilters.status === undefined
+      ? undefined
+      : assertStatus(normalizedFilters.status, 'filters.status');
+  const priority =
+    normalizedFilters.priority === undefined
+      ? undefined
+      : assertPriority(normalizedFilters.priority, 'filters.priority');
+  const category =
+    normalizedFilters.category === undefined
+      ? undefined
+      : assertCategory(normalizedFilters.category, 'filters.category');
+
+  return store.tasks
+    .filter((task) => (status === undefined ? true : task.status === status))
+    .filter((task) => (priority === undefined ? true : task.priority === priority))
+    .filter((task) => (category === undefined ? true : task.category === category))
+    .map((task) => cloneTask(task));
 }
 
 /**
@@ -96,6 +120,9 @@ export function updateTask(id, updates) {
       ...(patch.status !== undefined ? { status: assertStatus(patch.status, 'status') } : {}),
       ...(patch.priority !== undefined
         ? { priority: assertPriority(patch.priority, 'priority') }
+        : {}),
+      ...(patch.category !== undefined
+        ? { category: assertCategory(patch.category, 'category') }
         : {}),
       updatedAt: new Date().toISOString()
     };

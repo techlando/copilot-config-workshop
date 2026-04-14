@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {
   TASK_PRIORITIES,
   TASK_STATUSES,
+  assertCategory,
   assertDescription,
   assertIsoTimestamp,
   assertPlainObject,
@@ -75,6 +76,24 @@ test('assertDescription throws for invalid type', () => {
   });
 });
 
+test('assertCategory normalizes trimmed category to lowercase', () => {
+  assert.equal(assertCategory('  Work  ', 'category'), 'work');
+});
+
+test('assertCategory throws for non-string category type', () => {
+  assert.throws(() => assertCategory(7, 'category'), {
+    name: 'TypeError',
+    message: 'category must be a string when provided.'
+  });
+});
+
+test('assertCategory throws for empty category string', () => {
+  assert.throws(() => assertCategory('   ', 'category'), {
+    name: 'TypeError',
+    message: 'category cannot be empty when provided.'
+  });
+});
+
 test('assertStatus accepts known statuses', () => {
   assert.equal(assertStatus('todo', 'status'), 'todo');
   assert.equal(assertStatus('in-progress', 'status'), 'in-progress');
@@ -132,6 +151,7 @@ test('isMutableTaskField returns true for mutable fields', () => {
   assert.equal(isMutableTaskField('description'), true);
   assert.equal(isMutableTaskField('status'), true);
   assert.equal(isMutableTaskField('priority'), true);
+  assert.equal(isMutableTaskField('category'), true);
 });
 
 test('isMutableTaskField returns false for immutable fields', () => {
