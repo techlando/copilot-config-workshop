@@ -1,7 +1,20 @@
 import { createTask, deleteTask, listTasks, updateTask } from './services/taskService.js';
+import { colorPriority, colorStatus } from './utils/colors.js';
 
 function printHeader(title) {
   console.log(`\n=== ${title} ===`);
+}
+
+function formatTask(task) {
+  return {
+    ...task,
+    status: colorStatus(task.status),
+    priority: colorPriority(task.priority)
+  };
+}
+
+function printTasks(tasks) {
+  console.table(tasks.map((task) => formatTask(task)));
 }
 
 function runDemo() {
@@ -17,25 +30,24 @@ function runDemo() {
       status: 'in-progress',
       priority: 'medium'
     });
-    console.log(taskA);
-    console.log(taskB);
+    printTasks([taskA, taskB]);
 
     printHeader('List tasks');
-    console.log(listTasks());
+    printTasks(listTasks());
 
     printHeader('Update task');
     const updatedTask = updateTask(taskA.id, {
       status: 'done',
       description: 'Schema reviewed and implementation completed.'
     });
-    console.log(updatedTask);
+    printTasks([updatedTask]);
 
     printHeader('Delete task');
     const removedTask = deleteTask(taskB.id);
-    console.log(removedTask);
+    printTasks([removedTask]);
 
     printHeader('Final state');
-    console.log(listTasks());
+    printTasks(listTasks());
   } catch (error) {
     console.error('Task Manager demo failed:', error);
     process.exitCode = 1;
