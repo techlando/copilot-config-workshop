@@ -1,0 +1,21 @@
+{
+  "name": "copilot-config-workshop",
+  "version": "1.0.0",
+  "description": "_Learn to configure and use GitHub Copilot effectively through hands-on exercises._",
+  "type": "module",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test tests/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}

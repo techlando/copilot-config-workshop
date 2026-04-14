@@ -28,7 +28,9 @@ export class Task {
       throw new TypeError('data must be a plain object.');
     }
 
-    const generatedId = String(randomUUID().replace(/[^0-9]/g, '').slice(0, 12) || '1');
+    const randomDigits = randomUUID().replace(/[^0-9]/g, '');
+    const normalizedDigits = randomDigits.replace(/^0+/, '');
+    const generatedId = String(normalizedDigits.slice(0, 12) || '1');
 
     this.id = assertTaskId(data.id ?? generatedId, 'id');
     this.title = assertTitle(data.title, 'title');
